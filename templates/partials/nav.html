@@ -1,0 +1,28 @@
+{% load static %}
+<nav class="nav" role="navigation" aria-label="Main navigation">
+  <div class="container nav__inner">
+
+    <a href="{% url 'home' %}" class="nav__logo" aria-label="The Porto Map — Home">
+      The <span>Porto</span> Map
+    </a>
+
+    <button class="nav__toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <ul class="nav__links" role="list">
+      <li><a href="{% url 'routes_list' %}">Walking Routes</a></li>
+      <li><a href="{% url 'art_gallery' %}">Art Gallery</a></li>
+      <li><a href="{% url 'tours_list' %}">Guided Tours</a></li>
+      <li><a href="{% url 'about' %}">About</a></li>
+      <li><a href="{% url 'contact' %}">Contact</a></li>
+    </ul>
+
+    <a href="{{ site_settings.etsy_shop_url }}" class="nav__cta" target="_blank" rel="noopener noreferrer">
+      Shop on Etsy ↗
+    </a>
+
+  </div>
+</nav>

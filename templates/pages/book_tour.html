@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Book — {{ tour_date.tour.name }}{% endblock %}
+
+{% block content %}
+<section class="section" style="padding-top: calc(80px + var(--space-2xl));">
+  <div class="container" style="max-width:560px;">
+    <a href="{% url 'tour_detail' tour_date.tour.slug %}" style="font-size:0.85rem; color:var(--text-muted);">← Back to Tour</a>
+    <h1 class="display-medium" style="margin-top:var(--space-md); margin-bottom:0.5rem;">Book Your Spot</h1>
+    <p class="body" style="margin-bottom:var(--space-xl);">
+      {{ tour_date.tour.name }} ·
+      {{ tour_date.date|date:"d M Y" }} · {{ tour_date.time|time:"H:i" }}
+    </p>
+
+    <div class="card fade-in" style="padding:var(--space-xl);">
+      <form method="post" action="{% url 'book_tour' tour_date.pk %}" novalidate>
+        {% csrf_token %}
+
+        {% for field in form %}
+          <div class="form-group">
+            <label class="form-label" for="{{ field.id_for_label }}">
+              {{ field.label }}{% if field.field.required %} *{% endif %}
+            </label>
+            {% if field.field.widget.input_type == 'textarea' %}
+              <textarea
+                id="{{ field.id_for_label }}"
+                name="{{ field.html_name }}"
+                class="form-textarea"
+                placeholder="{{ field.field.widget.attrs.placeholder|default:'' }}"
+                rows="{{ field.field.widget.attrs.rows|default:4 }}"
+              >{{ field.value|default:'' }}</textarea>
+            {% else %}
+              <input
+                type="{{ field.field.widget.input_type }}"
+                id="{{ field.id_for_label }}"
+                name="{{ field.html_name }}"
+                class="form-input"
+                placeholder="{{ field.field.widget.attrs.placeholder|default:'' }}"
+                value="{{ field.value|default:'' }}"
+                {% if field.field.widget.attrs.min %}min="{{ field.field.widget.attrs.min }}"{% endif %}
+                {% if field.field.widget.attrs.max %}max="{{ field.field.widget.attrs.max }}"{% endif %}
+              />
+            {% endif %}
+            {% for error in field.errors %}
+              <p class="form-error">{{ error }}</p>
+            {% endfor %}
+          </div>
+        {% endfor %}
+
+        <button type="submit" class="btn btn--primary" style="width:100%;">
+          Send Booking Request
+        </button>
+      </form>
+      <p style="font-size:0.78rem; color:var(--text-muted); margin-top:var(--space-sm); text-align:center;">
+        Sharon will confirm your booking by email within 24 hours.
+      </p>
+    </div>
+  </div>
+</section>
+{% endblock %}

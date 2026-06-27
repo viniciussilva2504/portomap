@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}About Sharon Jemima — The Porto Map{% endblock %}
+{% block meta_description %}Sharon Jemima is a British artist based in Porto, Portugal. She creates hand-drawn maps, walking route scripts and leads intimate guided tours.{% endblock %}
+
+{% block content %}
+
+<section class="section" style="padding-top: calc(80px + var(--space-2xl));">
+  <div class="container">
+    <div class="about-strip">
+
+      <div class="about-strip__image fade-in" aria-label="Sharon Jemima illustration portrait">
+        <span aria-hidden="true" style="font-size:5rem;">🎨</span>
+      </div>
+
+      <div class="fade-in">
+        <p class="label-caps">The Artist Behind The Map</p>
+        <h1 class="display-medium" style="margin-top:0.5rem; margin-bottom:var(--space-sm);">
+          Sharon Jemima
+        </h1>
+        <div class="divider"></div>
+
+        <p class="body-large" style="margin-bottom:var(--space-md);">
+          Sharon is a British artist who moved to Porto and never looked back.
+          She's spent years wandering the city's tiled staircases, riverside
+          terraces and half-forgotten backstreets — always with a sketchbook.
+        </p>
+
+        <p class="body" style="margin-bottom:var(--space-md);">
+          Her work grew out of a simple frustration: standard city maps don't
+          tell you anything. They show you where to go, but not why. Sharon's
+          illustrated walking route scripts fix that — they're part map, part
+          journal, part love letter to a city that rewards curiosity.
+        </p>
+
+        <p class="body" style="margin-bottom:var(--space-xl);">
+          The guided tours came next. Sharon began taking small groups through
+          the same routes she'd already drawn, and discovered that Porto looks
+          completely different when someone who actually lives there is pointing
+          things out. Tours are kept to a maximum of eight people — small enough
+          that nobody gets lost, large enough to spark good conversation.
+        </p>
+
+        <div class="stats-row" style="margin-bottom:var(--space-xl);">
+          <div class="stat">
+            <span class="stat__number">10+</span>
+            <span class="stat__label">Walking Routes</span>
+          </div>
+          <div class="stat">
+            <span class="stat__number">500+</span>
+            <span class="stat__label">Original Drawings</span>
+          </div>
+          <div class="stat">
+            <span class="stat__number">5★</span>
+            <span class="stat__label">Etsy Reviews</span>
+          </div>
+        </div>
+
+        <div style="display:flex; gap:var(--space-sm); flex-wrap:wrap;">
+          <a href="{% url 'routes_list' %}" class="btn btn--primary">Explore Routes</a>
+          <a href="{% url 'tours_list' %}" class="btn btn--ghost">Book a Tour</a>
+          <a href="{{ site_settings.etsy_shop_url }}" class="btn btn--gold"
+             target="_blank" rel="noopener noreferrer">Visit Etsy Shop ↗</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% endblock %}

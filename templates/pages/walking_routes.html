@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Walking Routes — Self-Guided Porto{% endblock %}
+{% block meta_description %}Download Sharon's illustrated self-guided walking route scripts for Porto. Walk the city at your own pace with hand-drawn maps and insider tips.{% endblock %}
+
+{% block content %}
+
+<div class="page-hero">
+  <div class="container">
+    <p class="label-caps">Digital Download</p>
+    <h1 class="display-large" style="margin-top:0.5rem; margin-bottom:1rem;">
+      Self-Guided<br />
+      <span class="neon-text-subtle">Walking Routes</span>
+    </h1>
+    <p class="body-large" style="max-width:540px; margin-inline:auto;">
+      Illustrated route scripts you download, print and take into the city.
+      Each one is packed with hand-drawn maps, Sharon's personal notes and
+      the addresses she actually recommends.
+    </p>
+  </div>
+</div>
+
+<section class="section--sm">
+  <div class="container">
+    {% if routes %}
+      <div class="grid-3 stagger">
+        {% for route in routes %}
+        <article class="card fade-in">
+          <div class="card__image">
+            {% if route.cover_image %}
+              <img src="{{ route.cover_image.url }}" alt="{{ route.title }}" loading="lazy" />
+            {% else %}
+              <div class="card__image-placeholder">🗺</div>
+            {% endif %}
+          </div>
+          <div class="card__body">
+            <p class="card__label">{{ route.neighbourhood|default:"Porto" }}</p>
+            <h2 class="card__title">{{ route.title }}</h2>
+            {% if route.subtitle %}
+              <p class="card__description">{{ route.subtitle }}</p>
+            {% endif %}
+            <p class="card__description">{{ route.description|truncatewords:20 }}</p>
+            <div class="card__meta">
+              <span>📍 {{ route.distance_km }} km</span>
+              <span>⏱ {{ route.duration_hours }}h</span>
+              <span>{{ route.get_difficulty_display }}</span>
+            </div>
+            <div style="display:flex; align-items:center; justify-content:space-between; gap:1rem; margin-top:0.75rem;">
+              <span class="card__price">
+                {% if route.price %}€{{ route.price }}{% else %}Free{% endif %}
+              </span>
+              <div style="display:flex; gap:0.5rem;">
+                <a href="{% url 'route_detail' route.slug %}" class="btn btn--ghost btn--sm">Details</a>
+                {% if route.etsy_listing_url %}
+                  <a href="{{ route.etsy_listing_url }}" class="btn btn--gold btn--sm"
+                     target="_blank" rel="noopener noreferrer">
+                    Buy on Etsy ↗
+                  </a>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </article>
+        {% endfor %}
+      </div>
+    {% else %}
+      <div style="text-align:center; padding:var(--space-2xl);">
+        <p style="color:var(--text-muted); margin-bottom:var(--space-md);">
+          Walking routes are being prepared. Check back soon!
+        </p>
+        <a href="{% url 'contact' %}" class="btn btn--ghost">Get Notified</a>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% endblock %}

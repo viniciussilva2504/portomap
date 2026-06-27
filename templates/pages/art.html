@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Art Gallery — Hand-drawn Porto{% endblock %}
+{% block meta_description %}Browse Sharon Jemima's original ink illustrations of Porto — available as prints from the Etsy shop.{% endblock %}
+
+{% block content %}
+
+<div class="page-hero">
+  <div class="container">
+    <p class="label-caps">Original Artwork</p>
+    <h1 class="display-large" style="margin-top:0.5rem; margin-bottom:1rem;">
+      Porto,<br />
+      <span class="neon-text-subtle">drawn from life</span>
+    </h1>
+    <p class="body-large" style="max-width:520px; margin-inline:auto;">
+      Ink illustrations of the city's most iconic and overlooked corners.
+      Each piece is drawn on location — no photo reference, no shortcuts.
+    </p>
+  </div>
+</div>
+
+<!-- Collection filter -->
+{% if collections %}
+<section class="section--sm" style="padding-bottom:0;">
+  <div class="container">
+    <div style="display:flex; flex-wrap:wrap; gap:0.5rem; margin-bottom:var(--space-lg);">
+      <a href="{% url 'art_gallery' %}"
+         class="btn btn--sm {% if not active_collection %}btn--primary{% else %}btn--ghost{% endif %}">
+        All
+      </a>
+      {% for col in collections %}
+        <a href="{% url 'art_gallery' %}?collection={{ col.slug }}"
+           class="btn btn--sm {% if active_collection == col.slug %}btn--primary{% else %}btn--ghost{% endif %}">
+          {{ col.name }}
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<section class="section--sm">
+  <div class="container">
+    {% if pieces %}
+      <div class="stagger" style="display:grid; grid-template-columns:repeat(auto-fill, minmax(240px, 1fr)); gap:var(--space-md);">
+        {% for piece in pieces %}
+        <article class="card fade-in">
+          <div class="card__image" style="aspect-ratio:3/4;">
+            {% if piece.image %}
+              <img src="{{ piece.image.url }}" alt="{{ piece.title }}" loading="lazy" />
+            {% else %}
+              <div class="card__image-placeholder" style="aspect-ratio:3/4;">✏️</div>
+            {% endif %}
+          </div>
+          <div class="card__body">
+            <p class="card__label">{{ piece.get_medium_display }}</p>
+            <h2 class="card__title" style="font-size:1rem;">{{ piece.title }}</h2>
+            {% if piece.collection %}
+              <p style="font-size:0.75rem; color:var(--text-muted); margin-bottom:0.5rem;">
+                {{ piece.collection.name }}
+              </p>
+            {% endif %}
+            <div style="display:flex; gap:0.5rem; margin-top:0.75rem;">
+              <a href="{% url 'art_detail' piece.slug %}" class="btn btn--ghost btn--sm">View</a>
+              {% if piece.etsy_listing_url %}
+                <a href="{{ piece.etsy_listing_url }}" class="btn btn--gold btn--sm"
+                   target="_blank" rel="noopener noreferrer">Buy ↗</a>
+              {% endif %}
+            </div>
+          </div>
+        </article>
+        {% endfor %}
+      </div>
+    {% else %}
+      <div style="text-align:center; padding:var(--space-2xl);">
+        <p style="color:var(--text-muted); margin-bottom:var(--space-md);">Gallery coming soon!</p>
+        <a href="{{ site_settings.etsy_shop_url }}" class="btn btn--gold"
+           target="_blank" rel="noopener noreferrer">
+          Visit Etsy Shop ↗
+        </a>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% endblock %}

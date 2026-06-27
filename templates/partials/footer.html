@@ -1,0 +1,68 @@
+<footer class="footer">
+  <div class="container">
+    <div class="footer__inner">
+
+      <!-- Brand -->
+      <div>
+        <p class="footer__brand-name">The <span>Porto</span> Map</p>
+        <p class="footer__tagline">
+          Hand-drawn maps, self-guided walks and intimate guided tours of Porto
+          — all created by one artist who lives and breathes this city.
+        </p>
+        <div class="footer__socials">
+          {% if site_settings.instagram_url %}
+            <a href="{{ site_settings.instagram_url }}" class="footer__social-link"
+               target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+              IG
+            </a>
+          {% endif %}
+          {% if site_settings.etsy_shop_url %}
+            <a href="{{ site_settings.etsy_shop_url }}" class="footer__social-link"
+               target="_blank" rel="noopener noreferrer" aria-label="Etsy Shop">
+              E
+            </a>
+          {% endif %}
+        </div>
+      </div>
+
+      <!-- Explore -->
+      <div>
+        <p class="footer__col-title">Explore</p>
+        <ul class="footer__links">
+          <li><a href="{% url 'home' %}">Home</a></li>
+          <li><a href="{% url 'walking_routes' %}">Walking Routes</a></li>
+          <li><a href="{% url 'art_gallery' %}">Art Gallery</a></li>
+          <li><a href="{% url 'tours_list' %}">Guided Tours</a></li>
+        </ul>
+      </div>
+
+      <!-- Info -->
+      <div>
+        <p class="footer__col-title">Info</p>
+        <ul class="footer__links">
+          <li><a href="{% url 'about' %}">About Sharon</a></li>
+          <li><a href="{% url 'contact' %}">Contact</a></li>
+          <li><a href="{{ site_settings.etsy_shop_url }}" target="_blank" rel="noopener noreferrer">Shop on Etsy</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div>
+        <p class="footer__col-title">Find Us</p>
+        <ul class="footer__links">
+          <li style="color: var(--text-muted); font-size: 0.875rem;">Porto, Portugal</li>
+          <li><a href="{% url 'contact' %}">Send a message</a></li>
+          <li><a href="{% url 'tours_list' %}">Book a tour</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer__bottom">
+      <p>© {% now "Y" %} The Porto Map · Sharon Jemima. All rights reserved.</p>
+      <p style="font-size: 0.75rem;">
+        Hand-drawn with love in Porto ♥
+      </p>
+    </div>
+  </div>
+</footer>
