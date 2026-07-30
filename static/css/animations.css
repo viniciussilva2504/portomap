@@ -22,9 +22,7 @@
 .glow-line {
   width: 100%;
   height: 1px;
-  background: linear-gradient(90deg, transparent, var(--neon), transparent);
-  opacity: 0.3;
-  box-shadow: 0 0 8px rgba(0,212,255,0.3);
+  background: var(--border);
   margin-block: var(--space-2xl);
 }
 
@@ -32,15 +30,15 @@
 .tag {
   display: inline-flex;
   align-items: center;
-  font-size: 0.65rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   padding: 0.2rem 0.6rem;
-  border-radius: var(--radius-pill);
-  background: rgba(0, 212, 255, 0.08);
-  border: 1px solid var(--border-neon);
-  color: var(--neon);
+  border-radius: var(--radius-sm);
+  background: var(--bg-cream);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
 }
 
 /* Stats row */
@@ -57,16 +55,16 @@
 }
 
 .stat__number {
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
   font-size: 2.5rem;
   font-weight: 700;
-  color: var(--neon);
-  text-shadow: 0 0 12px rgba(0,212,255,0.5);
+  color: var(--text-primary);
   line-height: 1;
 }
 
 .stat__label {
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   color: var(--text-muted);
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
