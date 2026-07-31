@@ -58,7 +58,7 @@ export default async function Home() {
             drawn by hand · walked with soul
           </p>
 
-          <p className="mt-6 text-sm leading-snug text-foreground/80 max-w-sm bg-background/70 rounded-lg px-3 py-0.5 backdrop-blur-sm">
+          <p className="mt-6 text-sm leading-snug text-foreground/80 max-w-[85vw] sm:max-w-sm bg-background/70 rounded-lg px-3 py-0.5 backdrop-blur-sm">
             Discover a secret Porto with us.
           </p>
 

@@ -21,9 +21,9 @@ export function RouteCard({ route }: { route: WalkingRoute }) {
           <span>·</span>
           <span>{DIFFICULTY_LABELS[route.difficulty]}</span>
         </div>
-        <div className="mt-4 flex items-center justify-between gap-3">
+        <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
           <span className="text-lg font-bold text-foreground">€{route.price}</span>
-          <div className="flex gap-2">
+          <div className="flex flex-wrap gap-2">
             <Link
               href={`/routes/${route.slug}`}
               className="inline-flex items-center rounded-full border border-border px-4 py-1.5 text-xs font-semibold text-foreground hover:bg-surface-elevated transition-colors"
