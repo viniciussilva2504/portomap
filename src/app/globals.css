@@ -1,0 +1,54 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --surface: #faf9f6;
+  --surface-elevated: #f3f1ec;
+  --foreground: #111111;
+  --muted: #555555;
+  --muted-light: #909090;
+
+  --red: #c9280e;
+  --red-dark: #a82008;
+  --yellow: #f5c800;
+  --yellow-dark: #d4a900;
+  --blue: #1e4fa0;
+  --blue-dark: #153880;
+
+  --primary: var(--blue);
+  --primary-dark: var(--blue-dark);
+  --primary-light: #4a6fa5;
+  --accent: var(--yellow-dark);
+  --border: #e2ddd6;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-surface-elevated: var(--surface-elevated);
+  --color-muted: var(--muted);
+  --color-muted-light: var(--muted-light);
+  --color-red: var(--red);
+  --color-red-dark: var(--red-dark);
+  --color-yellow: var(--yellow);
+  --color-yellow-dark: var(--yellow-dark);
+  --color-blue: var(--blue);
+  --color-blue-dark: var(--blue-dark);
+  --color-primary: var(--primary);
+  --color-primary-dark: var(--primary-dark);
+  --color-primary-light: var(--primary-light);
+  --color-accent: var(--accent);
+  --color-border: var(--border);
+  --font-sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
+
+html {
+  scroll-behavior: smooth;
+}

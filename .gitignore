@@ -1,50 +1,34 @@
-# Python
-__pycache__/
-*.py[cod]
-*$py.class
-*.so
-.Python
-*.egg
-*.egg-info/
-dist/
-build/
-.eggs/
+# dependencies
+/node_modules
+/.pnp
+.pnp.*
 
-# Virtual Environment
-.venv/
-venv/
-env/
+# testing
+/coverage
 
-# Django
-*.log
-local_settings.py
-db.sqlite3
-db.sqlite3-journal
-media/
+# next.js
+/.next/
+/out/
 
-# Environment variables
-.env
+# production
+/build
 
-# Static files (collected)
-staticfiles/
-
-# IDE
-.vscode/
-.idea/
-*.swp
-*.swo
-
-# OS
+# misc
 .DS_Store
-Thumbs.db
+*.pem
 
-# Coverage
-.coverage
-htmlcov/
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
 
-# Migrations (keep in version control for team projects, remove if solo)
-# */migrations/
+# env files
+.env*
 
-# Awesome reference folders (not part of the app)
-awesome-claude-code-subagents/
-awesome-design-md/
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
